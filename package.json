@@ -1,0 +1,16 @@
+{
+	"name": "com.actioncode.utility",
+	"displayName": "ActionCode-Utility",
+	"version": "0.0.1",
+	"unity": "2018.2",
+	"description": "This package contains useful utility codes.",
+	"keywords":["code extention", "utility"],
+	"category": "Utility",
+	"license": "MIT",
+	"author": "Hyago Oliveira <hyagogow@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://HyagoGow@bitbucket.org/nostgameteam/utility.git"
+    }, 
+	"dependencies": {}	
+}
