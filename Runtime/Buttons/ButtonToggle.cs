@@ -5,11 +5,12 @@ using UnityEngine.EventSystems;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Button Toggle -- swaps sprites based on its state
+    /// Button Toggle.
+    /// <para>Swaps sprites based on its state</para>
     /// </summary>
-    [AddComponentMenu("UI/ButtonToggle", 36)]
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(RectTransform))]
+    [AddComponentMenu("UI/ButtonToggle", 36)]
     public sealed class ButtonToggle : Selectable, IPointerClickHandler, ISubmitHandler
     {
         [Tooltip("Graphic Image the toggle should be working with.")]
@@ -18,31 +19,46 @@ namespace ActionCode.UI
         public Sprite onSprite;
         [Tooltip("Sprite to swap Graphic Image when toggle is off.")]
         public Sprite offSprite;
-        public bool isOn = true;
 
-        /// <summary>Callback fired when button is pressed.</summary>
+        /// <summary>
+        /// Callback fired when button is toggled.
+        /// </summary>
         [Header("Events")]
         public Toggle.ToggleEvent onValueChanged = new Toggle.ToggleEvent();
+
+        /// <summary>
+        /// Whether the button is toggle on.
+        /// </summary>
+        public bool IsOn { get; private set; } = true;
+
+        protected override void Reset()
+        {
+            base.Reset();
+            graphic = GetComponent<Image>();
+        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button != PointerEventData.InputButton.Left)
                 return;
 
-            InternalToggle();
+            Toggle();
         }
 
         public void OnSubmit(BaseEventData eventData)
         {
-            InternalToggle();
+            Toggle();
         }
 
-        private void InternalToggle()
+        /// <summary>
+        /// Toggles the button.
+        /// </summary>
+        public void Toggle()
         {
             if (!IsActive() || !IsInteractable()) return;
 
-            isOn = !isOn;
-            if (isOn)
+            IsOn = !IsOn;
+            if (IsOn)
             {
                 if (onSprite) graphic.sprite = onSprite;
                 else graphic.color -= Color.white * .5f;
@@ -53,9 +69,7 @@ namespace ActionCode.UI
                 else graphic.color = Color.white;
             }
 
-
-            if (onSprite && offSprite) graphic.sprite = isOn ? onSprite : offSprite;
-            onValueChanged.Invoke(isOn);
+            onValueChanged.Invoke(IsOn);
         }
     }
 }
