@@ -1,14 +1,13 @@
 {
-    "name": "ac.ui",
-    "references": [
-        "ac.utility"
-    ],
-    "optionalUnityReferences": [],
+    "name": "ActionCode.UI.Runtime",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

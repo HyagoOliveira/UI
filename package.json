@@ -1,16 +1,18 @@
 {
-	"name": "com.actioncode.utility",
-	"displayName": "ActionCode-Utility",
-	"version": "0.0.1",
-	"unity": "2018.2",
-	"description": "This package contains useful utility codes.",
-	"keywords":["code extention", "utility"],
-	"category": "Utility",
-	"license": "MIT",
-	"author": "Hyago Oliveira <hyagogow@gmail.com>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://HyagoGow@bitbucket.org/nostgameteam/utility.git"
-    }, 
-	"dependencies": {}	
+  "name": "com.actioncode.ui",
+  "displayName": "ActionCode-UI",
+  "version": "1.0.0",
+  "unity": "2018.3",
+  "description": "This package contains useful UI codes.",
+  "keywords": [
+    "ui",
+    "user interface"
+  ],
+  "category": "UI",
+  "license": "MIT",
+  "author": "Hyago Oliveira <hyagogow@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://HyagoGow@bitbucket.org/nostgameteam/ui.git"
+  }
 }
