@@ -31,9 +31,8 @@ namespace ActionCode.UI
         /// </summary>
         public bool IsOn { get; private set; } = true;
 
-        protected override void Reset()
+        private void Reset()
         {
-            base.Reset();
             graphic = GetComponent<Image>();
         }
 
