@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace GoofTroop.Events
+namespace ActionCode.UI
 {
     /// <summary>
     /// Adds Submit and Selection audios for a button.
