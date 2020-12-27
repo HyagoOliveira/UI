@@ -10,7 +10,7 @@ namespace ActionCode.UI
     /// </summary>
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(RectTransform))]
-    [AddComponentMenu("UI/ButtonToggle", 36)]
+    [AddComponentMenu("UI/Button Toggle")]
     public sealed class ButtonToggle : Selectable, IPointerClickHandler, ISubmitHandler
     {
         [Tooltip("Graphic Image the toggle should be working with.")]
@@ -31,10 +31,13 @@ namespace ActionCode.UI
         /// </summary>
         public bool IsOn { get; private set; } = true;
 
-        private void Reset()
+#if UNITY_EDITOR
+        protected override void Reset()
         {
+            base.Reset();
             graphic = GetComponent<Image>();
         }
+#endif
 
         public void OnPointerClick(PointerEventData eventData)
         {
