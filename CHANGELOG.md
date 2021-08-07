@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - BaseMenu component
+- MenuEventTrigger component
 
 ### Removed
 - ButtonToggle component. Not necessary once UnityEngine.Button (with Sprite Swap Transition enabled) do just it
