@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 - ButtonToggle component. Not necessary once UnityEngine.Button (with Sprite Swap Transition enabled) do just it
+- AudibleButton component. Improved by BaseMenu
 
 ## [1.1.0] - 2020-12-28
 ### Added
