@@ -23,33 +23,21 @@ namespace ActionCode.UI
             set => canvas.enabled = value;
         }
 
-        protected virtual void Reset()
-        {
-            canvas = GetComponent<Canvas>();
-        }
+        protected virtual void Reset() => canvas = GetComponent<Canvas>();
 
         /// <summary>
         /// Shows this GameObject by enabling its Canvas component.
         /// </summary>
-        public virtual void Show()
-        {
-            Visible = true;
-        }
+        public virtual void Show() => Visible = true;
 
         /// <summary>
         /// Hides this GameObject by disabling its Canvas component.
         /// </summary>
-        public virtual void Hide()
-        {
-            Visible = false;
-        }
+        public virtual void Hide() => Visible = false;
 
         /// <summary>
         /// Toggles this GameObject visibility.
         /// </summary>
-        public void Toggle()
-        {
-            Visible = !Visible;
-        }
+        public void Toggle() => Visible = !Visible;
     }
 }

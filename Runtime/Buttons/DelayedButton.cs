@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace ActionCode.UI
 {
@@ -28,7 +29,7 @@ namespace ActionCode.UI
             StartCoroutine(SubmitCoroutine(eventData));
         }
 
-        private System.Collections.IEnumerator SubmitCoroutine(BaseEventData eventData)
+        private IEnumerator SubmitCoroutine(BaseEventData eventData)
         {
             isSubmiting = true;
             yield return new WaitForSeconds(delay);
