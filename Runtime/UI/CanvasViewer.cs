@@ -17,10 +17,14 @@ namespace ActionCode.UI
         /// <summary>
         /// Whether the canvas is visible.
         /// </summary>
-        public bool Visible
+        public virtual bool Visible
         {
             get => canvas.enabled;
-            set => canvas.enabled = value;
+            set
+            {
+                enabled = value;
+                canvas.enabled = value;
+            }
         }
 
         protected virtual void Reset() => canvas = GetComponent<Canvas>();
@@ -28,11 +32,13 @@ namespace ActionCode.UI
         /// <summary>
         /// Shows this GameObject by enabling its Canvas component.
         /// </summary>
+        [ContextMenu("Show")]
         public virtual void Show() => Visible = true;
 
         /// <summary>
         /// Hides this GameObject by disabling its Canvas component.
         /// </summary>
+        [ContextMenu("Hide")]
         public virtual void Hide() => Visible = false;
 
         /// <summary>

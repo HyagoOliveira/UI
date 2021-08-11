@@ -3,11 +3,16 @@ using UnityEngine.EventSystems;
 
 namespace ActionCode.UI
 {
+    [RequireComponent(typeof(RectTransform))]
     public class MenuEventTrigger : MonoBehaviour,
         ISubmitHandler, ISelectHandler, IPointerEnterHandler, IPointerClickHandler
     {
         [Tooltip("The menu where this Event belongs.")]
         public BaseMenu menu;
+
+        public RectTransform RectTransform { get; private set; }
+
+        private void Awake() => RectTransform = GetComponent<RectTransform>();
 
         public void OnSubmit(BaseEventData eventData) => Submit();
 
