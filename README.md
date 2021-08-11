@@ -2,26 +2,15 @@
 
 * Useful UI codes.
 * Unity minimum version: **2018.3**
-* Current version: **1.1.0**
+* Current version: **2.0.0**
 * License: **MIT**
 
 ## Installation
 
 ### Using the Package Registry Server
 
-Open the **manifest.json** file inside your Unity project's **Packages** folder and add this code-block before `dependencies` attribute:
-
-```json
-"scopedRegistries": [ 
-    { 
-        "name": "Action Code", 
-        "url": "http://34.83.179.179:4873/", 
-        "scopes": [ "com.actioncode" ] 
-    } 
-],
-```
-
-The package **ActionCode-UI** will be available for you to install using the **Package Manager** windows.
+Follow the instructions inside [here](https://cutt.ly/ukvj1c8) and the package **ActionCode-UI** 
+will be available for you to install using the **Package Manager** windows.
 
 ### Using the Git URL
 
@@ -30,7 +19,7 @@ You will need a **Git client** installed on your computer with the Path variable
 Use the **Package Manager** "Add package from git URL..." feature or add manually this line inside `dependencies` attribute: 
 
 ```json
-"com.actioncode.UI":"https://bitbucket.org/nostgameteam/ui.git"
+"com.actioncode.ui":"https://bitbucket.org/nostgameteam/ui.git"
 ```
 
 ---
