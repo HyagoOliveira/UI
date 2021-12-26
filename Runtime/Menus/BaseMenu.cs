@@ -8,13 +8,15 @@ namespace ActionCode.UI
     /// Base component for menus.
     /// <para>It requires a <see cref="AudioSource"/> and <see cref="GraphicRaycaster"/> component.</para>
     /// </summary>
-    //[DisallowMultipleComponent]
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(GraphicRaycaster))]
     public class BaseMenu : CanvasViewer
     {
         [SerializeField, Tooltip("The local GraphicRaycaster component.")]
-        private GraphicRaycaster raycaster;
+        protected GraphicRaycaster raycaster;
+        [SerializeField, Tooltip("The GameObject that is selected every time this menu is enabled.")]
+        protected GameObject firstSelected;
 
         [Header("Audio")]
         [Tooltip("Audio clip played when any button is submitted.")]
@@ -22,14 +24,15 @@ namespace ActionCode.UI
         [Tooltip("Audio clip played when any button is selected.")]
         public AudioClip selection;
         [SerializeField, Tooltip("The local Audio Source component.")]
-        private AudioSource audioSource;
+        protected AudioSource audioSource;
 
         [Space]
-        [SerializeField, Tooltip("All buttons from this menu.")]
-        protected Button[] buttons;
+        [SerializeField, Tooltip("All local Menu Event Triggers associated to this menu.")]
+        protected MenuEventTrigger[] eventTriggers;
 
-        public MenuEventTrigger[] EventTriggers { get; private set; }
-
+        /// <summary>
+        /// The current Event System.
+        /// </summary>
         public EventSystem CurrentEventSystem { get; private set; }
 
         /// <summary>
@@ -51,14 +54,25 @@ namespace ActionCode.UI
             base.Reset();
             audioSource = GetComponent<AudioSource>();
             raycaster = GetComponent<GraphicRaycaster>();
-            buttons = GetComponentsInChildren<Button>(includeInactive: true);
+            eventTriggers = GetComponentsInChildren<MenuEventTrigger>(includeInactive: true);
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            CurrentEventSystem = EventSystem.current;
+            FindCurrentEventSystem();
             SetupEventTriggers();
         }
+
+        public override void Show()
+        {
+            base.Show();
+            if (firstSelected) SelectGameObject(firstSelected);
+        }
+
+        /// <summary>
+        /// Finds the <see cref="CurrentEventSystem"/>.
+        /// </summary>
+        public void FindCurrentEventSystem() => CurrentEventSystem = EventSystem.current;
 
         /// <summary>
         /// Plays the given audio clip.
@@ -77,35 +91,52 @@ namespace ActionCode.UI
         public void PlaySelectionAudio() => PlayAudio(selection);
 
         /// <summary>
-        /// Selects the first button.
+        /// Selects the first menu trigger.
         /// </summary>
-        public void SelectFirstButton() => SelectButton(0);
+        public void SelectFirstTrigger() => SelectTrigger(0);
 
         /// <summary>
-        /// Selects a button referenced by the given index.
-        /// <para>It checks if the button exists first.</para>
+        /// Selects a menu trigger referenced by the given index.
+        /// <para>It checks if the trigger exists first.</para>
         /// </summary>
-        /// <param name="index">The button index.</param>
-        public void SelectButton(int index)
+        /// <param name="index">The trigger index.</param>
+        public void SelectTrigger(int index)
         {
-            var canSelect = HasButton(index);
-            if (canSelect) SelectGameObject(buttons[index].gameObject);
+            var canSelect = HasTrigger(index);
+            if (canSelect) SelectGameObject(eventTriggers[index].gameObject);
         }
 
-        public bool IsButtonSelected(int index)
+        /// <summary>
+        /// Checks if the trigger referenced by the given index is selected.
+        /// </summary>
+        /// <param name="index">The trigger index.</param>
+        /// <returns>True if the trigger is selected. False otherwise.</returns>
+        public bool IsTriggerSelected(int index)
         {
-            var hasButton = HasButton(index);
-            return
-                hasButton &&
-                GetCurrentSelectedGameObject()?.GetInstanceID() ==
-                buttons[index].gameObject.GetInstanceID();
+            var hasTrigger = HasTrigger(index);
+            var hasSelectedGO = TryGetCurrentSelectedGameObject(out GameObject currentSelectedGameObject);
+            return hasTrigger && hasSelectedGO &&
+                currentSelectedGameObject.GetInstanceID() ==
+                eventTriggers[index].gameObject.GetInstanceID();
         }
 
-        public GameObject GetCurrentSelectedGameObject() =>
-            CurrentEventSystem.currentSelectedGameObject;
+        /// <summary>
+        /// Tries to get the current selected GameObject from <see cref="CurrentEventSystem"/>.
+        /// </summary>
+        /// <param name="currentSelectedGameObject">The GameObject currently considered active by the EventSystem.</param>
+        /// <returns>True if a GameObject is currently active by the EventSystem. False otherwise.</returns>
+        public bool TryGetCurrentSelectedGameObject(out GameObject currentSelectedGameObject)
+        {
+            currentSelectedGameObject = CurrentEventSystem.currentSelectedGameObject;
+            return currentSelectedGameObject != null;
+        }
 
-        public bool HasButton(int index) =>
-            index < buttons.Length && buttons[index];
+        /// <summary>
+        /// Checks if the trigger referenced by the given index exists.
+        /// </summary>
+        /// <param name="index">The trigger index.</param>
+        /// <returns>True if the trigger exists. False otherwise.</returns>
+        public bool HasTrigger(int index) => index < eventTriggers.Length && eventTriggers[index];
 
         /// <summary>
         /// Selects the given GameObject and deselects the previous one.
@@ -113,7 +144,7 @@ namespace ActionCode.UI
         /// <param name="gameObject">GameObject to select.</param>
         public void SelectGameObject(GameObject gameObject)
         {
-            var canSelect = !CurrentEventSystem.alreadySelecting;
+            var canSelect = HasCurrentEventSystem() && !CurrentEventSystem.alreadySelecting;
             if (canSelect) CurrentEventSystem.SetSelectedGameObject(gameObject);
         }
 
@@ -133,15 +164,17 @@ namespace ActionCode.UI
             PlaySelectionAudio();
         }
 
+        /// <summary>
+        /// Whether the <see cref="CurrentEventSystem"/> is valid.
+        /// </summary>
+        /// <returns>True if CurrentEventSystem was assigned. False otherwise.</returns>
+        public bool HasCurrentEventSystem() => CurrentEventSystem != null;
+
         private void SetupEventTriggers()
         {
-            EventTriggers = new MenuEventTrigger[buttons.Length];
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < eventTriggers.Length; i++)
             {
-                var hasTrigger = buttons[i].TryGetComponent(out EventTriggers[i]);
-                if (!hasTrigger) EventTriggers[i] = buttons[i].gameObject.AddComponent<MenuEventTrigger>();
-
-                EventTriggers[i].menu = this;
+                eventTriggers[i].menu = this;
             }
         }
     }
