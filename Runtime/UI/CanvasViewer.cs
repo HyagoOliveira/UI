@@ -44,6 +44,10 @@ namespace ActionCode.UI
         /// <summary>
         /// Toggles this GameObject visibility.
         /// </summary>
-        public void Toggle() => Visible = !Visible;
+        public void Toggle()
+        {
+            if (Visible) Hide();
+            else Show();
+        }
     }
 }
