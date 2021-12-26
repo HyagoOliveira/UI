@@ -66,7 +66,12 @@ namespace ActionCode.UI
         public override void Show()
         {
             base.Show();
-            if (firstSelected) SelectGameObject(firstSelected);
+            if (firstSelected)
+            {
+                audioSource.enabled = false;
+                CurrentEventSystem.SetSelectedGameObject(firstSelected);
+                audioSource.enabled = true;
+            }
         }
 
         /// <summary>
@@ -78,7 +83,10 @@ namespace ActionCode.UI
         /// Plays the given audio clip.
         /// </summary>
         /// <param name="clip">The clip being played.</param>
-        public void PlayAudio(AudioClip clip) => audioSource.PlayOneShot(clip);
+        public void PlayAudio(AudioClip clip)
+        {
+            if (audioSource.enabled) audioSource.PlayOneShot(clip);
+        }
 
         /// <summary>
         /// Plays the <see cref="submit"/> button audio clip.
