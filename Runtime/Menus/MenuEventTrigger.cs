@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace ActionCode.UI
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(RectTransform))]
     public class MenuEventTrigger : MonoBehaviour,
         ISubmitHandler, ISelectHandler, IPointerEnterHandler, IPointerClickHandler
@@ -26,8 +27,14 @@ namespace ActionCode.UI
             if (isLeftClick) Submit();
         }
 
-        protected virtual void Submit() => menu?.SubmitEvent(this);
+        protected virtual void Submit()
+        {
+            if (menu) menu.SubmitEvent(this);
+        }
 
-        protected virtual void Select() => menu?.SelectEvent(this);
+        protected virtual void Select()
+        {
+            if (menu) menu.SelectEvent(this);
+        }
     }
 }
