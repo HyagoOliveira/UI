@@ -3,11 +3,8 @@ using UnityEngine;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Plays the <see cref="submition"/> audio when any menu UI is submitted.
-    /// <para>
-    /// The menu UI must implement <see cref="ISubmitable"/> interface,
-    /// as <see cref="DelayedButton"/> does.
-    /// </para>
+    /// Plays the <see cref="submition"/> clip when any implementation of 
+    /// <see cref="ISubmitable"/> (like <see cref="DelayedButton"/>) is submitted.
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]

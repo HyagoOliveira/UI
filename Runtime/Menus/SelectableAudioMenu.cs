@@ -3,11 +3,8 @@ using UnityEngine;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Plays the <see cref="selection"/> audio when any menu UI is selected.
-    /// <para>
-    /// The menu UI must implement <see cref="ISelectable"/> interface,
-    /// as <see cref="DelayedButton"/> does.
-    /// </para>
+    /// Plays the <see cref="selection"/> audio when any implementation of 
+    /// <see cref="ISelectable"/> (like <see cref="DelayedButton"/>) is selected.
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
