@@ -4,22 +4,20 @@ using UnityEngine.UI;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Group Selectable components.
+    /// Selectable Group component.
     /// </summary>
     public sealed class SelectableGroup : MonoBehaviour
     {
-        [Tooltip("Selectable components.")]
-        public Selectable[] selectables;
+        [SerializeField, Tooltip("Selectable components.")]
+        private Selectable[] selectables;
 
-        private void Reset()
-        {
+        private void Reset() =>
             selectables = GetComponentsInChildren<Selectable>(includeInactive: true);
-        }
 
         /// <summary>
         /// Set all <see cref="selectables"/> interaction using the given param.
         /// </summary>
-        /// <param name="interactable"></param>
+        /// <param name="interactable">Whether is interactable.</param>
         public void SetInteraction(bool interactable)
         {
             foreach (var selectable in selectables)

@@ -11,11 +11,9 @@ namespace ActionCode.UI
     [RequireComponent(typeof(GraphicRaycaster))]
     public sealed class Popup : CanvasViewer
     {
-        [SerializeField]
-        [Tooltip("AudioSource to play when the Popup is opened.")]
+        [SerializeField, Tooltip("AudioSource to play when the Popup is opened.")]
         private AudioSource audioSource;
-        [SerializeField]
-        [Tooltip("List of Selectable Groups to be disabled when the popup is opened and enabled when it's closed.")]
+        [SerializeField, Tooltip("List of Selectable Groups to be disabled when the popup is opened and enabled when it's closed.")]
         private SelectableGroup[] interactionGroups;
 
         private Selectable[] selectables;
@@ -30,10 +28,7 @@ namespace ActionCode.UI
         private void Awake()
         {
             FindSelectables();
-            if (!Visible)
-            {
-                SetSelectableInteraction(interactable: false);
-            }
+            if (!Visible) SetSelectableInteraction(interactable: false);
         }
 
         /// <summary>
@@ -52,10 +47,7 @@ namespace ActionCode.UI
         /// Opens this popup using the given delay.
         /// </summary>
         /// <param name="delay">The time (in seconds) to open.</param>
-        public void Open(float delay)
-        {
-            Invoke("Open", delay);
-        }
+        public void Open(float delay) => Invoke(nameof(Open), delay);
 
         /// <summary>
         /// Closes this popup.
@@ -72,10 +64,7 @@ namespace ActionCode.UI
         /// Closes this popup using the given delay.
         /// </summary>
         /// <param name="delay">The time (in seconds) to close.</param>
-        public void Close(float delay)
-        {
-            Invoke("Close", delay);
-        }
+        public void Close(float delay) => Invoke(nameof(Close), delay);
 
         private void SelectFirstSelectableGameObject()
         {
@@ -111,9 +100,7 @@ namespace ActionCode.UI
             }
         }
 
-        private void FindSelectables()
-        {
+        private void FindSelectables() =>
             selectables = GetComponentsInChildren<Selectable>(includeInactive: true);
-        }
     }
 }

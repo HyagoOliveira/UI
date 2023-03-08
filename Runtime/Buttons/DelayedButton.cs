@@ -12,18 +12,27 @@ namespace ActionCode.UI
     [AddComponentMenu("UI/Delayed Button")]
     public sealed class DelayedButton : Button
     {
-        [Min(0F), Tooltip("Time (in seconds) to trigger the button On Click action.")]
-        public float delay = 0.2F;
+        [SerializeField, Tooltip("Time (in seconds) to trigger the button On Click action."), Min(minDelay)]
+        private float delay = 0.2F;
+
+        private const float minDelay = 0F;
+
+        /// <summary>
+        /// Time (in seconds) to trigger the button On Click action.
+        /// </summary>
+        public float Delay
+        {
+            get => delay;
+            set => delay = Mathf.Max(minDelay, value);
+        }
 
         private bool isSubmiting;
 
-        public override void OnPointerClick(PointerEventData eventData)
-        {
-            if (isSubmiting) return;
-            StartCoroutine(SubmitCoroutine(eventData));
-        }
+        public override void OnSubmit(BaseEventData eventData) => TrySubmit(eventData);
 
-        public override void OnSubmit(BaseEventData eventData)
+        public override void OnPointerClick(PointerEventData eventData) => TrySubmit(eventData);
+
+        private void TrySubmit(BaseEventData eventData)
         {
             if (isSubmiting) return;
             StartCoroutine(SubmitCoroutine(eventData));
