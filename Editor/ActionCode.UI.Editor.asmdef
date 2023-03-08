@@ -1,6 +1,6 @@
 {
     "name": "ActionCode.UI.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "ActionCode.UI.Editor",
     "references": [
         "GUID:8685e8457fd873e41b49ab1be9f5bc53"
     ],
