@@ -1,7 +1,8 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 namespace ActionCode.UI
 {
@@ -10,12 +11,13 @@ namespace ActionCode.UI
     /// <para>It will trigger the button On Click action after the <see cref="delay"/>.</para>
     /// </summary>
     [AddComponentMenu("UI/Delayed Button")]
-    public sealed class DelayedButton : Button
+    public sealed class DelayedButton : Button, ISelectable, ISubmitable
     {
         [SerializeField, Tooltip("Time (in seconds) to trigger the button On Click action."), Min(minDelay)]
         private float delay = 0.2F;
 
-        private const float minDelay = 0F;
+        public event Action OnSelected;
+        public event Action OnSubmitted;
 
         /// <summary>
         /// Time (in seconds) to trigger the button On Click action.
@@ -27,6 +29,13 @@ namespace ActionCode.UI
         }
 
         private bool isSubmiting;
+        private const float minDelay = 0F;
+
+        public override void OnSelect(BaseEventData eventData)
+        {
+            base.OnSelect(eventData);
+            OnSelected?.Invoke();
+        }
 
         public override void OnSubmit(BaseEventData eventData) => TrySubmit(eventData);
 
@@ -42,7 +51,10 @@ namespace ActionCode.UI
         {
             isSubmiting = true;
             yield return new WaitForSeconds(delay);
+
             base.OnSubmit(eventData);
+            OnSubmitted?.Invoke();
+
             isSubmiting = false;
         }
     }
