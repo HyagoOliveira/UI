@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - DelayedButton implements ISelectable and ISubmitable interfaces
 
+### Removed
+- MenuEventTrigger component
+
 ## [3.0.0] - 2021-12-26
 ### Changed
 - BaseMenu: Replace Buttons by MenuEventTriggers
