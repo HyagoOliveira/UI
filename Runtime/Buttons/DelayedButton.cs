@@ -50,10 +50,10 @@ namespace ActionCode.UI
         private IEnumerator SubmitCoroutine(BaseEventData eventData)
         {
             isSubmiting = true;
-            yield return new WaitForSeconds(delay);
-
-            base.OnSubmit(eventData);
             OnSubmitted?.Invoke();
+
+            yield return new WaitForSeconds(delay);
+            base.OnSubmit(eventData);
 
             isSubmiting = false;
         }
