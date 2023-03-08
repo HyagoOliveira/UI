@@ -39,8 +39,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add initial files
 - Initial commit
 
-[Unreleased]: https://bitbucket.org/nostgameteam/ui/branches/compare/master%0D3.0.0
-[3.0.0]: https://bitbucket.org/nostgameteam/ui/src/3.0.0/
-[2.0.0]: https://bitbucket.org/nostgameteam/ui/src/2.0.0/
-[1.0.1]: https://bitbucket.org/nostgameteam/ui/src/1.0.1/
-[1.0.0]: https://bitbucket.org/nostgameteam/ui/src/1.0.0/
+
+[Unreleased]: https://github.com/HyagoOliveira/UI/compare/3.0.0...main
+[3.0.0]: https://github.com/HyagoOliveira/UI/tree/3.0.0/
+[2.0.0]: https://github.com/HyagoOliveira/UI/tree/2.0.0/
+[1.0.1]: https://github.com/HyagoOliveira/UI/tree/1.0.1/
+[1.0.0]: https://github.com/HyagoOliveira/UI/tree/1.0.0/

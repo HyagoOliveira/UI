@@ -10,9 +10,15 @@
   ],
   "category": "UI",
   "license": "MIT",
-  "author": "Hyago Oliveira <hyagogow@gmail.com>",
+  "homepage": "https://github.com/HyagoOliveira/UI#readme",
   "repository": {
     "type": "git",
-    "url": "https://HyagoGow@bitbucket.org/nostgameteam/ui.git"
+    "url": "https://github.com/HyagoOliveira/UI.git"
+  },
+  "documentationUrl": "https://github.com/HyagoOliveira/UI#readme",
+  "changelogUrl": "https://github.com/HyagoOliveira/UI/CHANGELOG.md",
+  "author": {
+    "name": "Hyago Oliveira",
+    "email": "hyagogow@gmail.com"
   }
 }
