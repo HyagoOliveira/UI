@@ -21,6 +21,8 @@ namespace ActionCode.UI.Editor
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(delayProperty);
+            serializedObject.ApplyModifiedProperties();
+
             base.OnInspectorGUI();
         }
     }
