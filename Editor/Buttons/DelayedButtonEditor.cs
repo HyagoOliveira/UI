@@ -15,7 +15,7 @@ namespace ActionCode.UI.Editor
         protected override void OnEnable()
         {
             base.OnEnable();
-            delayProperty = serializedObject.FindProperty("delay");
+            delayProperty = serializedObject.FindProperty(nameof(DelayedButton.Delay).ToLower());
         }
 
         public override void OnInspectorGUI()
