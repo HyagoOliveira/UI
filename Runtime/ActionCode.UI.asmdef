@@ -1,5 +1,6 @@
 {
-    "name": "ActionCode.UI.Runtime",
+    "name": "ActionCode.UI",
+    "rootNamespace": "ActionCode.UI",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
