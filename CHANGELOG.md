@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - ISelectable interface
 - ISubmitable interface
 - SelectableAudioMenu component
+- SubmitableAudioMenu component
 
 ### Changed
 - DelayedButton implements ISelectable and ISubmitable interfaces
