@@ -39,7 +39,11 @@ namespace ActionCode.UI
 
         public override void OnSubmit(BaseEventData eventData) => TrySubmit(eventData);
 
-        public override void OnPointerClick(PointerEventData eventData) => TrySubmit(eventData);
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            var isLeftClick = eventData.button == PointerEventData.InputButton.Left;
+            if (isLeftClick) TrySubmit(eventData);
+        }
 
         private void TrySubmit(BaseEventData eventData)
         {
