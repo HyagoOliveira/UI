@@ -68,5 +68,13 @@ namespace ActionCode.UI
 
             eventSystem.SetSelectedGameObject(firstGameObject);
         }
+
+        [ContextMenu("Create a Traditional Menu")]
+        private void CreateTraditionalMenu()
+        {
+            gameObject.AddComponent<HighlightableMenu>();
+            gameObject.AddComponent<SelectableAudioMenu>();
+            gameObject.AddComponent<SubmitableAudioMenu>();
+        }
     }
 }
