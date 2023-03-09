@@ -46,13 +46,15 @@ an implementation of [ISubmitable](/Runtime/Interfaces/ISubmitable.cs) interface
 ### Select a Button when the Mouse (or other Pointer) hovers it
 
 Normally, a Selectable GameObject (like buttons) is just highlighted when a Pointer hovers it.
-For some games it's preferred to select the button instead. You can do it using *SelectWhenHighlight* component.
+For some games it's preferred to select the button instead. You can do it using *HighlightableMenu* component.
 
-Add [SelectWhenHighlight](/Runtime/Menus/SelectWhenHighlight.cs) component in the GameObject parenting your buttons.
+Add [HighlightableMenu](/Runtime/Menus/HighlightableMenu.cs) component in the GameObject parenting your buttons.
+
 This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
 an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) interface, like *DelayedButton* does.
 
->**Note**: for a more traditional menu experience, it's important to disable *Deselect On Background Click* in **Input System UI Input Module** component.
+>**Note**: for a more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
+inside the **Input System UI Input Module** component handling the UI.
 
 ## Installation
 

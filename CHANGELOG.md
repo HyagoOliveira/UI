@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - IHighlightable interface
 - SelectableAudioMenu component
 - SubmitableAudioMenu component
-- SelectWhenHighlight component
+- HighlightableMenu component
 - MenuData Scriptable Object
 - AbstractMenu component
 

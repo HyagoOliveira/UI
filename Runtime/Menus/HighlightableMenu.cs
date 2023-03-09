@@ -8,7 +8,7 @@ namespace ActionCode.UI
     /// (like <see cref="DelayedButton"/>) when any Pointer (like the mouse) highlights it.
     /// </summary>
     [DisallowMultipleComponent]
-    public sealed class SelectWhenHighlight : MonoBehaviour
+    public sealed class HighlightableMenu : MonoBehaviour
     {
         private IHighlightable[] highlightables;
 
