@@ -36,7 +36,7 @@ namespace ActionCode.UI
             TryFindFirstGameObject();
         }
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             if (Visible) TrySelectFirstGameObject();
         }
@@ -65,6 +65,9 @@ namespace ActionCode.UI
 
             var eventSystem = EventSystem.current;
             if (eventSystem == null) return;
+
+            var isAlreadySelected = eventSystem.currentSelectedGameObject == firstGameObject;
+            if (isAlreadySelected) return;
 
             eventSystem.SetSelectedGameObject(firstGameObject);
         }
