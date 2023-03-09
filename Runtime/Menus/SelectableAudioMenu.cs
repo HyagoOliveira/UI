@@ -19,14 +19,11 @@ namespace ActionCode.UI
 
         private void Reset() => source = GetComponent<AudioSource>();
         private void Awake() => FindSelectables();
-        private void OnEnable() => BindSelectablesAfterDelay();
+        private void OnEnable() => BindSelectables();
         private void OnDisable() => UnBindSelectables();
 
         private void FindSelectables() =>
             selectables = GetComponentsInChildren<ISelectable>(includeInactive: true);
-
-        // The binding has a small delay to prevent the selection sound to be played soon after the game starts.
-        private void BindSelectablesAfterDelay() => Invoke(nameof(BindSelectables), 0.01F);
 
         private void BindSelectables()
         {
