@@ -47,7 +47,7 @@ namespace ActionCode.UI
         public override void Show()
         {
             base.Show();
-            TrySelectFirstGameObject();
+            if (Application.isPlaying) TrySelectFirstGameObject();
         }
 
         protected abstract void BindButtonsEvents();
