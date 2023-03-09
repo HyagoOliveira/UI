@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Plays the <see cref="submition"/> clip when any implementation of 
+    /// Plays the <see cref="MenuData.Submition"/> clip when any implementation of 
     /// <see cref="ISubmitable"/> (like <see cref="DelayedButton"/>) is submitted.
     /// </summary>
     [DisallowMultipleComponent]
@@ -12,8 +12,8 @@ namespace ActionCode.UI
     {
         [SerializeField, Tooltip("The local AudioSource component.")]
         private AudioSource source;
-        [SerializeField, Tooltip("The audio played when submitted.")]
-        private AudioClip submition;
+        [SerializeField, Tooltip("The Data for this menu.")]
+        private MenuData data;
 
         private ISubmitable[] submitables;
 
@@ -41,6 +41,6 @@ namespace ActionCode.UI
             }
         }
 
-        private void HandleSubmitted() => source.PlayOneShot(submition);
+        private void HandleSubmitted() => source.PlayOneShot(data.Submition);
     }
 }

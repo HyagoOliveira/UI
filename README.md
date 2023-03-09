@@ -21,10 +21,16 @@ Create and implement a class inheriting from [AbstractMenu](/Runtime/Menus/Abstr
 All buttons *OnClick* actions should be binded (and unbinded) via code.
 It's important that you use the *DelayedButton* instead the default one.
 
+### Create a Menu Data asset
+
+This Scriptable Object is important for creating menus and reuse the data present on it.
+
+Create a new Menu Data asset by using the Create menu, **ActionCode > UI > Menu Data**.
+
 ### Play an Audio when a button is selected
 
-Add [SelectableAudioMenu](/Runtime/Menus/SelectableAudioMenu.cs) component in the GameObject parenting your buttons and 
-choose a *selection* AudioClip to play every time a button is selected. 
+Add [SelectableAudioMenu](/Runtime/Menus/SelectableAudioMenu.cs) component in the GameObject parenting your buttons and
+assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Selection* AudioClip to play every time a button is selected. 
 
 This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
 an implementation of [ISelectable](/Runtime/Interfaces/ISelectable.cs) interface, like *DelayedButton* does.
@@ -32,7 +38,7 @@ an implementation of [ISelectable](/Runtime/Interfaces/ISelectable.cs) interface
 ### Play an Audio when a button is submitted
 
 Add [SubmitableAudioMenu](/Runtime/Menus/SubmitableAudioMenu.cs) component in the GameObject parenting your buttons and 
-choose a *submition* AudioClip to play every time a button is submitted. 
+assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Submition* AudioClip to play every time a button is submitted. 
 
 This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
 an implementation of [ISubmitable](/Runtime/Interfaces/ISubmitable.cs) interface, like *DelayedButton* does.
@@ -45,6 +51,8 @@ For some games it's preferred to select the button instead. You can do it using 
 Add [SelectWhenHighlight](/Runtime/Menus/SelectWhenHighlight.cs) component in the GameObject parenting your buttons.
 This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
 an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) interface, like *DelayedButton* does.
+
+>**Note**: for a more traditional menu experience, it's important to disable *Deselect On Background Click* in **Input System UI Input Module** component.
 
 ## Installation
 

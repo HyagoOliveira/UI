@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ActionCode.UI
 {
     /// <summary>
-    /// Plays the <see cref="selection"/> audio when any implementation of 
+    /// Plays the <see cref="MenuData.Selection"/> clip when any implementation of 
     /// <see cref="ISelectable"/> (like <see cref="DelayedButton"/>) is selected.
     /// </summary>
     [DisallowMultipleComponent]
@@ -12,8 +12,8 @@ namespace ActionCode.UI
     {
         [SerializeField, Tooltip("The local AudioSource component.")]
         private AudioSource source;
-        [SerializeField, Tooltip("The audio played when selected.")]
-        private AudioClip selection;
+        [SerializeField, Tooltip("The Data for this menu.")]
+        private MenuData data;
 
         private ISelectable[] selectables;
 
@@ -44,6 +44,6 @@ namespace ActionCode.UI
             }
         }
 
-        private void HandleSelected() => source.PlayOneShot(selection);
+        private void HandleSelected() => source.PlayOneShot(data.Selection);
     }
 }
