@@ -56,6 +56,15 @@ an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) int
 >**Note**: for a more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
 inside the **Input System UI Input Module** component handling the UI.
 
+### Using all
+
+To use all above components in a single traditional menu, right click on your menu component 
+(the one implementing AbstractMenu) and select **Create a Traditional Menu**.
+
+![Create a Traditional Menu](/Docs~/creating-traditional-menu.png "Create a Traditional Menu")
+
+HighlightableMenu, SelectableAudioMenu and SubmitableAudioMenu components will attached to its GameObject.
+
 ## Installation
 
 ### Using the Package Registry Server
