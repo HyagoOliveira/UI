@@ -69,7 +69,14 @@ namespace ActionCode.UI
             var isAlreadySelected = eventSystem.currentSelectedGameObject == firstGameObject;
             if (isAlreadySelected) return;
 
+            // Disable a possible SelectableAudioMenu component to don't
+            // play any sound when the menu selects its first GameObject.
+            var selectableAudio = GetComponent<SelectableAudioMenu>();
+            if (selectableAudio) selectableAudio.enabled = false;
+
             eventSystem.SetSelectedGameObject(firstGameObject);
+
+            if (selectableAudio) selectableAudio.enabled = true;
         }
 
         [ContextMenu("Create a Traditional Menu")]
