@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - HighlightableMenu component
 - MenuData Scriptable Object
 - AbstractMenu component
+- SelectableSlider component
 
 ### Changed
 - DelayedButton implements ISelectable, ISubmitable and IHighlightable interfaces
