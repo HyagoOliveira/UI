@@ -25,7 +25,7 @@ using ActionCode.UI;
 namespace YourGameNamespace.UI
 {
     [DisallowMultipleComponent]
-    public sealed class PauseOptions : AbstractMenu
+    public sealed class PauseMenu : AbstractMenu
     {
         [Header("Buttons")]
         [SerializeField] private DelayedButton resumeButton;
