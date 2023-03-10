@@ -38,7 +38,7 @@ namespace ActionCode.UI
 
         protected virtual void Awake()
         {
-            if (Visible) TrySelectFirstGameObject();
+            if (Visible) Show();
         }
 
         protected virtual void OnEnable() => BindButtonsEvents();
@@ -47,7 +47,7 @@ namespace ActionCode.UI
         public override void Show()
         {
             base.Show();
-            if (Application.isPlaying) TrySelectFirstGameObject();
+            TrySelectFirstGameObject();
         }
 
         protected abstract void BindButtonsEvents();
