@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - AudibleSlider component
 - HighlightableTrigger component
 - SelectableTrigger component
+- OnShow and OnHide events into CanvasViewer
 
 ### Changed
 - DelayedButton implements ISelectable, ISubmitable and IHighlightable interfaces

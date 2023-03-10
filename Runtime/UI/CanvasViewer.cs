@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ActionCode.UI
@@ -15,6 +16,16 @@ namespace ActionCode.UI
     {
         [SerializeField, Tooltip("The canvas component")]
         private Canvas canvas;
+
+        /// <summary>
+        /// Event fired when this Viewer is shown.
+        /// </summary>
+        public event Action OnShow;
+
+        /// <summary>
+        /// Event fired when this Viewer is hidden.
+        /// </summary>
+        public event Action OnHide;
 
         /// <summary>
         /// Whether the canvas is visible.
@@ -35,13 +46,21 @@ namespace ActionCode.UI
         /// Shows this GameObject by enabling its Canvas component.
         /// </summary>
         [ContextMenu("Show")]
-        public virtual void Show() => Visible = true;
+        public virtual void Show()
+        {
+            Visible = true;
+            OnShow?.Invoke();
+        }
 
         /// <summary>
         /// Hides this GameObject by disabling its Canvas component.
         /// </summary>
         [ContextMenu("Hide")]
-        public virtual void Hide() => Visible = false;
+        public virtual void Hide()
+        {
+            Visible = false;
+            OnHide?.Invoke();
+        }
 
         /// <summary>
         /// Toggles this GameObject visibility.
