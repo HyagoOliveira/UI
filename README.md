@@ -14,16 +14,56 @@ For some games it's preferred to trigger a button *On Click* event only after a 
 You can do it using the [DelayedButton](/Runtime/Buttons/DelayedButton.cs) component and 
 setting the *Delay* property.
 
-### Creating a new Menu
+### Creating a Menu
 
-Create and implement a class inheriting from [AbstractMenu](/Runtime/Menus/AbstractMenu.cs). 
+Create a new class implementing [AbstractMenu](/Runtime/Menus/AbstractMenu.cs) component, like so:
 
-All buttons *OnClick* actions should be binded (and unbinded) via code.
-It's important that you use the *DelayedButton* instead the default one.
+```csharp
+using UnityEngine;
+using ActionCode.UI;
+
+namespace YourGameNamespace.UI
+{
+    [DisallowMultipleComponent]
+    public sealed class PauseOptions : AbstractMenu
+    {
+        [Header("Buttons")]
+        [SerializeField] private DelayedButton resumeButton;
+        [SerializeField] private DelayedButton restartButton;
+        [SerializeField] private DelayedButton soundsButton;
+        [SerializeField] private DelayedButton exitButton;
+
+        protected override void BindButtonsEvents()
+        {
+            resumeButton.onClick.AddListener(Resume);
+            restartButton.onClick.AddListener(OpenRestartPopup);
+            soundsButton.onClick.AddListener(OpenSoundOptions);
+            exitButton.onClick.AddListener(OpenExitPopup);
+        }
+
+        protected override void UnBindButtonsEvents()
+        {
+            resumeButton.onClick.RemoveListener(Resume);
+            restartButton.onClick.RemoveListener(OpenRestartPopup);
+            soundsButton.onClick.RemoveListener(OpenSoundOptions);
+            exitButton.onClick.RemoveListener(OpenExitPopup);
+        }
+
+        private void Resume() => print("Resume");
+        private void Restart() => print("Restart");
+        private void Sounds()=> print("Sounds");
+        private void Exit() => print("Exit");
+    }
+}
+```
+
+Note that all buttons *OnClick* events should be binded (and unbinded) via code. This is important for good code practice.
+
+Also, it's important that you use the *DelayedButton* instead the default one.
 
 ### Create a Menu Data asset
 
-This Scriptable Object is important to reuse the data present on it into other menus.
+This *Scriptable Object* is important to reuse the data present on it into other menus.
 
 Create a new **Menu Data** asset by using the Create menu, **ActionCode > UI > Menu Data**.
 
@@ -32,44 +72,47 @@ Create a new **Menu Data** asset by using the Create menu, **ActionCode > UI > M
 Add [SelectableAudioMenu](/Runtime/Menus/SelectableAudioMenu.cs) component in the GameObject parenting your buttons and
 assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Selection* AudioClip to play every time a button is selected. 
 
-This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
 an implementation of [ISelectable](/Runtime/Interfaces/ISelectable.cs) interface, like *DelayedButton* does.
 
-If you want to add this behavior to other UI component, like a Slider or Text, add the [SelectableTrigger](/Runtime/Triggers/SelectableTrigger.cs)
+If you want to add this behavior to other UI component, like a *Slider* or *Text*, add the [SelectableTrigger](/Runtime/Triggers/SelectableTrigger.cs)
 component to it, which is other implementation of *ISelectable* interface.
+
+It's possible to play an *AudioSource* every time the *Slider* value changes by using [AudibleSlider](/Runtime/UI/AudibleSlider.cs). This is useful 
+to demonstrate an increase/decrease of audio volume when setting an *AudioMixer* volume property using the *Slider*.
 
 ### Play an Audio when a button is submitted
 
 Add [SubmitableAudioMenu](/Runtime/Menus/SubmitableAudioMenu.cs) component in the GameObject parenting your buttons and 
 assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Submition* AudioClip to play every time a button is submitted. 
 
-This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
 an implementation of [ISubmitable](/Runtime/Interfaces/ISubmitable.cs) interface, like *DelayedButton* does.
 
 ### Select a Button when the Mouse (or other Pointer) hovers it
 
-Normally, a Selectable GameObject (like buttons) is just highlighted when a Pointer hovers it.
-For some games it's preferred to select the button instead. You can do it using *HighlightableMenu* component.
+Normally, a *Selectable* GameObject (like buttons) is just highlighted when a Pointer hovers it.
+For some games it's preferred to select the button instead. You can do it by using *HighlightableMenu* component.
 
 Add [HighlightableMenu](/Runtime/Menus/HighlightableMenu.cs) component in the GameObject parenting your buttons.
 
-This GameObject doesn't need to have an AbstractMenu implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
 an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) interface, like *DelayedButton* does.
 
-If you want to add this behavior to other UI component, like a Slider or Text, add the [HighlightableTrigger](/Runtime/Triggers/HighlightableTrigger.cs)
+If you want to add this behavior to other UI component, like a *Slider* or *Text*, add the [HighlightableTrigger](/Runtime/Triggers/HighlightableTrigger.cs)
 component to it, which is other implementation of *IHighlightable* interface.
-
->**Note**: for a more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
-inside the **Input System UI Input Module** component handling your UI.
 
 ### Using all
 
 To use all components above in a single traditional menu, right click on your menu component 
-(the one implementing AbstractMenu) and select **Create a Traditional Menu**.
+(the one implementing *AbstractMenu*) and select **Create a Traditional Menu**:
 
 ![Create a Traditional Menu](/Docs~/creating-traditional-menu.png "Create a Traditional Menu")
 
-HighlightableMenu, SelectableAudioMenu and SubmitableAudioMenu components will attached to its GameObject.
+*HighlightableMenu*, *SelectableAudioMenu* and *SubmitableAudioMenu* components will attached to its GameObject.
+
+>**Note**: for a more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
+inside the **Input System UI Input Module** component handling your UI.
 
 ## Installation
 
