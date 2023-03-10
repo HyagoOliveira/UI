@@ -15,6 +15,10 @@ namespace ActionCode.UI
         protected GraphicRaycaster raycaster;
         [SerializeField, Tooltip("This GameObject will be select by default when the Menu is Shown.")]
         protected GameObject firstGameObject;
+        [SerializeField, Tooltip("If enabled, the EventSystem will be disabled when this menu is Hidden.")]
+        private bool disableEventSystemOnHide = true;
+
+        private EventSystem eventSystem;
 
         /// <summary>
         /// Whether the Menu is visible.
@@ -38,6 +42,7 @@ namespace ActionCode.UI
 
         protected virtual void Awake()
         {
+            eventSystem = EventSystem.current;
             if (Visible) Show();
         }
 
@@ -47,7 +52,14 @@ namespace ActionCode.UI
         public override void Show()
         {
             base.Show();
+            if (eventSystem) eventSystem.enabled = true;
             TrySelectFirstGameObject();
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            CheckDisableEventSystem();
         }
 
         protected abstract void BindButtonsEvents();
@@ -61,10 +73,7 @@ namespace ActionCode.UI
 
         private void TrySelectFirstGameObject()
         {
-            if (firstGameObject == null) return;
-
-            var eventSystem = EventSystem.current;
-            if (eventSystem == null) return;
+            if (firstGameObject == null || eventSystem == null) return;
 
             var isAlreadySelected = eventSystem.currentSelectedGameObject == firstGameObject;
             if (isAlreadySelected) return;
@@ -85,6 +94,12 @@ namespace ActionCode.UI
             gameObject.AddComponent<HighlightableMenu>();
             gameObject.AddComponent<SelectableAudioMenu>();
             gameObject.AddComponent<SubmitableAudioMenu>();
+        }
+
+        private void CheckDisableEventSystem()
+        {
+            if (disableEventSystemOnHide && eventSystem)
+                eventSystem.enabled = false;
         }
     }
 }
