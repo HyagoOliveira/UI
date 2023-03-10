@@ -63,7 +63,7 @@ namespace ActionCode.UI
             isSubmiting = true;
             OnSubmitted?.Invoke();
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSecondsRealtime(delay);
             base.OnSubmit(eventData);
 
             isSubmiting = false;

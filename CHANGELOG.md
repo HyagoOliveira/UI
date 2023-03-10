@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - DelayedButton implements ISelectable, ISubmitable and IHighlightable interfaces
+- DelayedButton waits for seconds in realtime
 
 ### Removed
 - MenuEventTrigger component
