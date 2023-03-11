@@ -102,6 +102,13 @@ an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) int
 If you want to add this behavior to other UI component, like a *Slider* or *Text*, add the [HighlightableTrigger](/Runtime/Triggers/HighlightableTrigger.cs)
 component to it, which is other implementation of *IHighlightable* interface.
 
+### Make First Button (or any *Selectable* component) Selected when Menu Starts
+
+In most games the first button from a Menu is already selected when it started.
+
+To create this behavior, add [FirstGameObjectSelector](/Runtime/Menus/FirstGameObjectSelector.cs) component in the GameObject 
+parenting the *Selectable* component. This GameObject may have an *AbstractMenu* implementation on it or even a *Popup* component.
+
 ### Using all
 
 To use all components above in a single traditional menu, right click on your menu component 
@@ -109,9 +116,9 @@ To use all components above in a single traditional menu, right click on your me
 
 ![Create a Traditional Menu](/Docs~/creating-traditional-menu.png "Create a Traditional Menu")
 
-*HighlightableMenu*, *SelectableAudioMenu* and *SubmitableAudioMenu* components will attached to its GameObject.
+*HighlightableMenu*, *SelectableAudioMenu*, *SubmitableAudioMenu* and *FirstGameObjectSelector* components will attached to its GameObject.
 
->**Note**: for a more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
+>**Note**: for a even more traditional menu experience, don't forget to disable the *Deselect On Background Click* field 
 inside the **Input System UI Input Module** component handling your UI.
 
 ## Installation
