@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - AudibleSlider component
 - HighlightableTrigger component
 - SelectableTrigger component
+- FirstGameObjectSelector component
 - OnShow and OnHide events into CanvasViewer
 - Close Button property into Popup component
 
