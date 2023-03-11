@@ -18,10 +18,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - HighlightableTrigger component
 - SelectableTrigger component
 - OnShow and OnHide events into CanvasViewer
+- Close Button property into Popup component
 
 ### Changed
 - DelayedButton implements ISelectable, ISubmitable and IHighlightable interfaces
 - DelayedButton waits for seconds in realtime
+- Remove AudiSource and SelectableGroups from Popup component
 
 ### Removed
 - MenuEventTrigger component
