@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - HighlightableTrigger component
 - SelectableTrigger component
 - FirstGameObjectSelector component
-- OnShow and OnHide events into CanvasViewer
+- OnShown and OnHidden events into CanvasViewer
 - Close Button property into Popup component
 
 ### Changed

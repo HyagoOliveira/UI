@@ -25,8 +25,8 @@ namespace ActionCode.UI
         }
 
         private void Awake() => eventSystem = EventSystem.current;
-        private void OnEnable() => viewer.OnShow += HandleViewerShow;
-        private void OnDisable() => viewer.OnShow -= HandleViewerShow;
+        private void OnEnable() => viewer.OnShown += HandleViewerShow;
+        private void OnDisable() => viewer.OnShown -= HandleViewerShow;
 
         private void HandleViewerShow() => TrySelectFirstGameObject();
 

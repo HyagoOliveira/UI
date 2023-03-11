@@ -20,12 +20,12 @@ namespace ActionCode.UI
         /// <summary>
         /// Event fired when this Viewer is shown.
         /// </summary>
-        public event Action OnShow;
+        public event Action OnShown;
 
         /// <summary>
         /// Event fired when this Viewer is hidden.
         /// </summary>
-        public event Action OnHide;
+        public event Action OnHidden;
 
         /// <summary>
         /// Whether the canvas is visible.
@@ -49,7 +49,7 @@ namespace ActionCode.UI
         public virtual void Show()
         {
             Visible = true;
-            OnShow?.Invoke();
+            OnShown?.Invoke();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace ActionCode.UI
         public virtual void Hide()
         {
             Visible = false;
-            OnHide?.Invoke();
+            OnHidden?.Invoke();
         }
 
         /// <summary>
