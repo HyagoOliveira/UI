@@ -32,7 +32,7 @@ namespace ActionCode.UI
             raycaster = GetComponent<GraphicRaycaster>();
         }
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
             if (Visible) Show();
         }
