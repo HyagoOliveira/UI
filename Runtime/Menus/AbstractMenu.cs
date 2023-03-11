@@ -50,7 +50,6 @@ namespace ActionCode.UI
         public override void Show()
         {
             base.Show();
-            if (eventSystem) eventSystem.enabled = true;
             TrySelectFirstGameObject();
         }
 
