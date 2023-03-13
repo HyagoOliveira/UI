@@ -12,11 +12,7 @@ namespace ActionCode.UI
         [SerializeField, Tooltip("The button used to close this Popup.")]
         protected Button closeButton;
 
-        protected override void Reset()
-        {
-            base.Reset();
-            closeButton = GetComponentInChildren<Button>();
-        }
+        protected virtual void Reset() => closeButton = GetComponentInChildren<Button>();
 
         protected virtual void OnEnable()
         {

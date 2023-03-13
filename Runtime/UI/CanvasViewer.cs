@@ -14,9 +14,6 @@ namespace ActionCode.UI
     [RequireComponent(typeof(Canvas))]
     public class CanvasViewer : MonoBehaviour
     {
-        [SerializeField, Tooltip("The canvas component")]
-        private Canvas canvas;
-
         /// <summary>
         /// Event fired when this Viewer is shown.
         /// </summary>
@@ -32,15 +29,9 @@ namespace ActionCode.UI
         /// </summary>
         public virtual bool Visible
         {
-            get => canvas.enabled;
-            set
-            {
-                enabled = value;
-                canvas.enabled = value;
-            }
+            get => gameObject.activeInHierarchy;
+            set => gameObject.SetActive(value);
         }
-
-        protected virtual void Reset() => canvas = GetComponent<Canvas>();
 
         /// <summary>
         /// Shows this GameObject by enabling its Canvas component.
