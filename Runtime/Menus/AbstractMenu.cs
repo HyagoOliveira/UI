@@ -10,17 +10,11 @@ namespace ActionCode.UI
     [RequireComponent(typeof(GraphicRaycaster))]
     public abstract class AbstractMenu : CanvasViewer
     {
-        protected virtual void Start() => CheckVisibility();
         protected virtual void OnEnable() => BindButtonsEvents();
         protected virtual void OnDisable() => UnBindButtonsEvents();
 
         protected abstract void BindButtonsEvents();
         protected abstract void UnBindButtonsEvents();
-
-        private void CheckVisibility()
-        {
-            if (Visible) Show();
-        }
 
         [ContextMenu("Create a Traditional Menu")]
         private void CreateTraditionalMenu()

@@ -33,6 +33,8 @@ namespace ActionCode.UI
             set => gameObject.SetActive(value);
         }
 
+        protected virtual void Start() => Show();
+
         /// <summary>
         /// Shows this GameObject by enabling its Canvas component.
         /// </summary>
