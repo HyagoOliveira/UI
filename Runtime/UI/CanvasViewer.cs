@@ -38,7 +38,6 @@ namespace ActionCode.UI
         /// <summary>
         /// Shows this GameObject by enabling its Canvas component.
         /// </summary>
-        [ContextMenu("Show")]
         public virtual void Show()
         {
             Visible = true;
@@ -48,7 +47,6 @@ namespace ActionCode.UI
         /// <summary>
         /// Hides this GameObject by disabling its Canvas component.
         /// </summary>
-        [ContextMenu("Hide")]
         public virtual void Hide()
         {
             Visible = false;
