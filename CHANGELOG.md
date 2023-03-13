@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - FirstGameObjectSelector component
 - OnShown and OnHidden events into CanvasViewer
 - Close Button property into Popup component
+- ConfirmationPopup component
 
 ### Changed
 - DelayedButton implements ISelectable, ISubmitable and IHighlightable interfaces
