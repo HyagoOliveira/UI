@@ -7,10 +7,10 @@ namespace ActionCode.UI
     /// Popup component for UI panels.
     /// </summary>
     [RequireComponent(typeof(GraphicRaycaster))]
-    public sealed class Popup : CanvasViewer
+    public class Popup : CanvasViewer
     {
         [SerializeField, Tooltip("The button used to close this Popup.")]
-        private Button closeButton;
+        protected Button closeButton;
 
         protected override void Reset()
         {
@@ -18,12 +18,12 @@ namespace ActionCode.UI
             closeButton = GetComponentInChildren<Button>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (closeButton) closeButton.onClick.AddListener(HandleCloseButtonClick);
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             if (closeButton) closeButton.onClick.RemoveListener(HandleCloseButtonClick);
         }
@@ -31,7 +31,7 @@ namespace ActionCode.UI
         /// <summary>
         /// Opens this popup.
         /// </summary>
-        public void Open() => Show();
+        public virtual void Open() => Show();
 
         /// <summary>
         /// Opens this popup using the given delay.
@@ -42,7 +42,7 @@ namespace ActionCode.UI
         /// <summary>
         /// Closes this popup.
         /// </summary>
-        public void Close() => Hide();
+        public virtual void Close() => Hide();
 
         /// <summary>
         /// Closes this popup using the given delay.
