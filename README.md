@@ -9,10 +9,9 @@
 
 ### Using a Delayed Button
 
-For some games it's preferred to trigger a button *On Click* event only after a delay period of time.
+For some games it's preferred to trigger a button *On Click* event only after a delayed period of time.
 
-You can do it using the [DelayedButton](/Runtime/Buttons/DelayedButton.cs) component and 
-setting the *Delay* property.
+You can do this by using the [DelayedButton](/Runtime/Buttons/DelayedButton.cs) component and setting the *Delay* property.
 
 ### Creating a Menu
 
@@ -72,21 +71,21 @@ Create a new **Menu Data** asset by using the Create menu, **ActionCode > UI > M
 Add [SelectableAudioMenu](/Runtime/Menus/SelectableAudioMenu.cs) component in the GameObject parenting your buttons and
 assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Selection* AudioClip to play every time a button is selected. 
 
-This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons have
 an implementation of [ISelectable](/Runtime/Interfaces/ISelectable.cs) interface, like *DelayedButton* does.
 
 If you want to add this behavior to other UI component, like a *Slider* or *Text*, add the [SelectableTrigger](/Runtime/Triggers/SelectableTrigger.cs)
 component to it, which is other implementation of *ISelectable* interface.
 
 It's possible to play an *AudioSource* every time the *Slider* value changes by using [AudibleSlider](/Runtime/UI/AudibleSlider.cs). This is useful 
-to demonstrate an increase/decrease of audio volume when setting an *AudioMixer* volume property using the *Slider*.
+to demonstrate an increasing/decreasing of audio volume when setting an *AudioMixer* volume property using the *Slider*.
 
 ### Play an Audio when a button is submitted
 
 Add [SubmitableAudioMenu](/Runtime/Menus/SubmitableAudioMenu.cs) component in the GameObject parenting your buttons and 
 assign a **Menu Data** asset to it. Inside this asset, don't forget to choose a *Submition* AudioClip to play every time a button is submitted. 
 
-This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons have
 an implementation of [ISubmitable](/Runtime/Interfaces/ISubmitable.cs) interface, like *DelayedButton* does.
 
 ### Select a Button when the Mouse (or other Pointer) hovers it
@@ -96,7 +95,7 @@ For some games it's preferred to select the button instead. You can do it by usi
 
 Add [HighlightableMenu](/Runtime/Menus/HighlightableMenu.cs) component in the GameObject parenting your buttons.
 
-This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons has
+This GameObject doesn't need to have an *AbstractMenu* implementation on it but it's necessary that your children buttons have
 an implementation of [IHighlightable](/Runtime/Interfaces/IHighlightable.cs) interface, like *DelayedButton* does.
 
 If you want to add this behavior to other UI component, like a *Slider* or *Text*, add the [HighlightableTrigger](/Runtime/Triggers/HighlightableTrigger.cs)
