@@ -46,6 +46,6 @@ namespace ActionCode.UI
         /// <param name="delay">The time (in seconds) to close.</param>
         public void Close(float delay) => Invoke(nameof(Close), delay);
 
-        private void HandleCloseButtonClick() => Close();
+        protected virtual void HandleCloseButtonClick() => Close();
     }
 }
