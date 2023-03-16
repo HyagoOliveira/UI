@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.0.0] - 2023-03-16
+
 ### Added
 - ISelectable interface
 - ISubmitable interface
@@ -67,7 +70,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial commit
 
 
-[Unreleased]: https://github.com/HyagoOliveira/UI/compare/3.0.0...main
+[Unreleased]: https://github.com/HyagoOliveira/UI/compare/4.0.0...main
+[4.0.0]: https://github.com/HyagoOliveira/UI/tree/4.0.0/
 [3.0.0]: https://github.com/HyagoOliveira/UI/tree/3.0.0/
 [2.0.0]: https://github.com/HyagoOliveira/UI/tree/2.0.0/
 [1.0.1]: https://github.com/HyagoOliveira/UI/tree/1.0.1/

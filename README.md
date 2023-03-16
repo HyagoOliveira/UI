@@ -2,7 +2,7 @@
 
 * Useful UI codes.
 * Unity minimum version: **2018.3**
-* Current version: **3.0.0**
+* Current version: **4.0.0**
 * License: **MIT**
 
 ## How To Use
