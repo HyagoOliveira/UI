@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- GradientSlider component
+
 ## [4.0.0] - 2023-03-16
 
 ### Added
