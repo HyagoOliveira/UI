@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [4.1.0] - 2023-03-21
 ### Added
 - GradientSlider component
 
 ## [4.0.0] - 2023-03-16
-
 ### Added
 - ISelectable interface
 - ISubmitable interface
@@ -73,7 +73,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial commit
 
 
-[Unreleased]: https://github.com/HyagoOliveira/UI/compare/4.0.0...main
+[Unreleased]: https://github.com/HyagoOliveira/UI/compare/4.1.0...main
+[4.1.0]: https://github.com/HyagoOliveira/UI/tree/4.1.0/
 [4.0.0]: https://github.com/HyagoOliveira/UI/tree/4.0.0/
 [3.0.0]: https://github.com/HyagoOliveira/UI/tree/3.0.0/
 [2.0.0]: https://github.com/HyagoOliveira/UI/tree/2.0.0/
