@@ -13,11 +13,13 @@ namespace ActionCode.UI
 
         private Graphic fill;
 
+#if UNITY_EDITOR
         protected override void Reset()
         {
             base.Reset();
             fill = null;
         }
+#endif
 
         protected override void Set(float input, bool sendCallback = true)
         {
