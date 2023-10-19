@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.2.0] - 2023-10-19
 ### Added
 - Image Preset
 - Circle Sprite
@@ -82,7 +84,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial commit
 
 
-[Unreleased]: https://github.com/HyagoOliveira/UI/compare/4.1.1...main
+[Unreleased]: https://github.com/HyagoOliveira/UI/compare/4.2.0...main
+[4.2.0]: https://github.com/HyagoOliveira/UI/tree/4.2.0/
 [4.1.1]: https://github.com/HyagoOliveira/UI/tree/4.1.1/
 [4.1.0]: https://github.com/HyagoOliveira/UI/tree/4.1.0/
 [4.0.0]: https://github.com/HyagoOliveira/UI/tree/4.0.0/
